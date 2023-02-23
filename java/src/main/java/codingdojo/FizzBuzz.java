@@ -1,7 +1,6 @@
 package codingdojo;
 
 public class FizzBuzz {
-
     public void print() {
         for (int i = 1; i < 101; i++) {
             System.out.println(convert(i));
