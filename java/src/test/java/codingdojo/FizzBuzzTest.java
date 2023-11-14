@@ -32,4 +32,11 @@ public class FizzBuzzTest {
         assertEquals("FizzBuzz", new FizzBuzz().convert(15));
         assertEquals("FizzBuzz", new FizzBuzz().convert(30));
     }
+
+    @Test
+    public void MultipleOfThreeAndFiveAndSevenAreFizzBuzzWhizz()
+    {
+        assertEquals("FizzBuzzWhizz", new FizzBuzz().convert(105));
+        assertEquals("BuzzBang", new FizzBuzz().convert(110));
+    }
 }
