@@ -10,8 +10,7 @@ class FizzBuzz:
             return str(num)
 
     def print(self):
-        for i in range(1, 101):
-            print(self.convert(i))
+        return (self.convert(i) for i in range(1, 101))
 
 if __name__ == "__main__":
-    FizzBuzz().print()
+    [print(item) for item in FizzBuzz().print()]
