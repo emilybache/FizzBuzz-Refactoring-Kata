@@ -36,10 +36,13 @@ public class FizzBuzzTest {
     @Test
     public void PrintsTo100() {
         var stream = new ByteArrayOutputStream();
+
         new FizzBuzz().print(new PrintStream(stream));
+
         String output = stream.toString(StandardCharsets.UTF_8);
-        assertEquals("1\n", output.substring(0, 2));
-        assertEquals("Buzz\n", output.substring(output.length()-5));
-        assertEquals(100, output.split("\n").length);
+        String[] allLines = output.split(System.lineSeparator());
+        assertEquals(100, allLines.length);
+        assertEquals("1", allLines[0]);
+        assertEquals("Buzz", allLines[allLines.length - 1]);
     }
 }
