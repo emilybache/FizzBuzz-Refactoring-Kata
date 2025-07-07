@@ -43,3 +43,16 @@ def test_convert_custom_factors() -> None:
     assert fizzbuzz.convert(3 * 5, factors) == "FizzBuzz"
     assert fizzbuzz.convert(3 * 7, factors) == "FizzWhizz"
     assert fizzbuzz.convert(3 * 5 * 7, factors) == "FizzBuzzWhizz"
+
+
+def test_end_with_string() -> None:
+    factors = {
+        3: "Fizz",
+        5: "Buzz",
+        7: "Whizz",
+        11: "Bang",
+    }
+    all = list(fizzbuzz.for_print(factor_names=factors, end="FizzBuzzWhizzBang"))
+    assert all[0] == "1"
+    assert all[-1] == "FizzBuzzWhizzBang"
+    assert len(all) == 3 * 5 * 7 * 11

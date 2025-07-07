@@ -1,3 +1,4 @@
+import itertools
 from typing import Iterable
 
 _DEFAULT_FACTORS = {
@@ -18,7 +19,11 @@ def convert(
 
 def for_print(
     start: int = 1,
-    end: int = 100,
+    end: str | int = 100,
     factor_names: dict[int, str] = _DEFAULT_FACTORS,
 ) -> Iterable[str]:
-    return (convert(i, factor_names) for i in range(1, 101))
+    for i in itertools.count(start):
+        fb = convert(i, factor_names)
+        yield fb
+        if i == end or fb == end:
+            break
