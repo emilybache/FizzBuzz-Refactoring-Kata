@@ -26,3 +26,20 @@ def test_print() -> None:
     assert len(all) == 100
     assert all[0] == "1"
     assert all[-1] == "Buzz"
+
+
+def test_convert_custom_factors() -> None:
+    factors = {
+        3: "Fizz",
+        5: "Buzz",
+        7: "Whizz",
+        11: "Bang",
+    }
+    assert fizzbuzz.convert(1, factors) == "1"
+    assert fizzbuzz.convert(3, factors) == "Fizz"
+    assert fizzbuzz.convert(5, factors) == "Buzz"
+    assert fizzbuzz.convert(7, factors) == "Whizz"
+    assert fizzbuzz.convert(11, factors) == "Bang"
+    assert fizzbuzz.convert(3 * 5, factors) == "FizzBuzz"
+    assert fizzbuzz.convert(3 * 7, factors) == "FizzWhizz"
+    assert fizzbuzz.convert(3 * 5 * 7, factors) == "FizzBuzzWhizz"
