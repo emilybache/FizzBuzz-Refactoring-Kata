@@ -7,17 +7,21 @@ void FizzBuzz::print(std::ostream& out) {
 }
 
 std::string FizzBuzz::convert(int number) {
-    if (number % 15 == 0) {
-        return "FizzBuzz";
+    std::string result = "";
+
+    std::vector<Factor> factors = {
+            Factor(3, "Fizz"),
+            Factor(5, "Buzz")
+    };
+
+    for (const auto& factor : factors) {
+        if (number % factor.value == 0) {
+            result += factor.name;
+        }
     }
 
-    if (number % 5 == 0) {
-        return "Buzz";
+    if (result == "") {
+        return std::to_string(number);
     }
-
-    if (number % 3 == 0) {
-        return "Fizz";
-    }
-
-    return std::to_string(number);
+    return result;
 }

@@ -1,6 +1,8 @@
 #define DOCTEST_CONFIG_ASSERTS_RETURN_VALUES
 #include "doctest/doctest.h"
+#include "ApprovalTests.hpp"
 #include "FizzBuzz.h"
+#include <sstream>
 
 TEST_CASE("NonMultipleOfThreeOrFiveArePreserved") {
     FizzBuzz fizzBuzz;
@@ -24,4 +26,10 @@ TEST_CASE("MultipleOfThreeAndFiveAreFizzBuzz") {
     FizzBuzz fizzBuzz;
     CHECK(fizzBuzz.convert(15) == "FizzBuzz");
     CHECK(fizzBuzz.convert(30) == "FizzBuzz");
+}
+
+TEST_CASE("FizzBuzz up to 100") {
+    std::stringstream bo;
+    FizzBuzz().print(bo);
+    ApprovalTests::Approvals::verify(bo.str());
 }
