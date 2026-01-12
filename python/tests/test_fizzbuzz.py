@@ -1,3 +1,8 @@
+from io import StringIO
+
+import pytest
+from approvaltests import verify
+
 from fizzbuzz import FizzBuzz
 
 
@@ -17,8 +22,9 @@ def test_multiple_of_three_and_five_are_fizzbuzz():
     assert FizzBuzz().convert(15) == "FizzBuzz"
     assert FizzBuzz().convert(30) == "FizzBuzz"
 
-def test_print():
-    all = list(FizzBuzz().print())
-    assert len(all) == 100
-    assert all[0] == "1"
-    assert all[-1] == "Buzz"
+
+pytest.mark.slow
+def test_fizzbuzz_to_100():
+    out = StringIO()
+    FizzBuzz().print(out)
+    verify(out.getvalue())

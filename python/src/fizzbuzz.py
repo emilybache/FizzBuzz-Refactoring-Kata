@@ -1,16 +1,32 @@
+import sys
+from typing import NamedTuple
+
+
+class Factor(NamedTuple):
+    number: int
+    name: str
+
+
 class FizzBuzz:
     def convert(self, num):
-        if num % 3 == 0 and num % 5 == 0:
-            return "FizzBuzz"
-        elif num % 3 == 0:
-            return "Fizz"
-        elif num % 5 == 0:
-            return "Buzz"
-        else:
-            return str(num)
+        result = ""
+        factors = [
+            Factor(3, "Fizz"),
+            Factor(5, "Buzz")
+        ]
 
-    def print(self):
-        return (self.convert(i) for i in range(1, 101))
+        for factor in factors:
+            if num % factor.number == 0:
+                result += factor.name
+
+        return result if result else str(num)
+
+    def print(self, output):
+        output.write("\n".join(
+            self.convert(i)
+            for i in range(1, 101)) + "\n"
+                     )
+
 
 if __name__ == "__main__":
-    [print(item) for item in FizzBuzz().print()]
+    FizzBuzz().print(sys.stdout)
