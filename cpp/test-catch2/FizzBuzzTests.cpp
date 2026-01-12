@@ -1,5 +1,7 @@
 #include "catch2/catch.hpp"
+#include "ApprovalTests.hpp"
 #include "FizzBuzz.h"
+#include <sstream>
 
 TEST_CASE("NonMultipleOfThreeOrFiveArePreserved") {
     FizzBuzz fizzBuzz;
@@ -23,4 +25,10 @@ TEST_CASE("MultipleOfThreeAndFiveAreFizzBuzz") {
     FizzBuzz fizzBuzz;
     REQUIRE(fizzBuzz.convert(15) == "FizzBuzz");
     REQUIRE(fizzBuzz.convert(30) == "FizzBuzz");
+}
+
+TEST_CASE("FizzBuzz up to 100") {
+    std::stringstream bo;
+    FizzBuzz().print(bo);
+    ApprovalTests::Approvals::verify(bo.str());
 }

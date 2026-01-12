@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
+#include "ApprovalTests.hpp"
 #include "FizzBuzz.h"
+#include <sstream>
 
 TEST(FizzBuzzTests, NonMultipleOfThreeOrFiveArePreserved) {
     FizzBuzz fizzBuzz;
@@ -23,4 +25,10 @@ TEST(FizzBuzzTests, MultipleOfThreeAndFiveAreFizzBuzz) {
     FizzBuzz fizzBuzz;
     EXPECT_EQ(fizzBuzz.convert(15), "FizzBuzz");
     EXPECT_EQ(fizzBuzz.convert(30), "FizzBuzz");
+}
+
+TEST(FizzBuzzTests, fizzBuzzUpTo100) {
+    std::stringstream bo;
+    FizzBuzz().print(bo);
+    ApprovalTests::Approvals::verify(bo.str());
 }
