@@ -2,31 +2,36 @@ namespace FizzBuzz;
 
 public class FizzBuzz
 {
-    public void Print()
+    public record Factor(int Value, string Name);
+
+    public void Print(TextWriter writer)
     {
         for (int i = 1; i < 101; i++)
         {
-            Console.WriteLine(Convert(i));
+            writer.WriteLine(Convert(i));
         }
     }
     
     public string Convert(int number)
     {
-        if (number % 15 == 0)
+        var result = "";
+
+        var factors = new List<Factor>
         {
-            return "FizzBuzz";
+            new Factor(3, "Fizz"),
+            new Factor(5, "Buzz")
+        };
+
+        foreach (var factor in factors)
+        {
+            if (number % factor.Value == 0)
+            {
+                result += factor.Name;
+            }
         }
 
-        if (number % 5 == 0)
-        {
-            return "Buzz";
-        }
-
-        if (number % 3 == 0)
-        {
-            return "Fizz";
-        }
-
-        return number.ToString();
+        if (result == "")
+            return "" + number;
+        return result;
     }
 }

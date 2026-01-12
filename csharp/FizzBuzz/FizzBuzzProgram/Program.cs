@@ -1,3 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
+public class FizzBuzzProgram
+{
+    public static void Main()
+    {
+        new FizzBuzz.FizzBuzz().Print(Console.Out);
+    }
+}
 
-new FizzBuzz.FizzBuzz().Print();
+
