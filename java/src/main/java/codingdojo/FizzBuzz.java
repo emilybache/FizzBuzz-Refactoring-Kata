@@ -1,6 +1,7 @@
 package codingdojo;
 
 import java.io.PrintStream;
+import java.util.List;
 
 public class FizzBuzz {
     public void print(PrintStream out) {
@@ -9,21 +10,21 @@ public class FizzBuzz {
         }
     }
     public String convert(int number) {
-        if (number % 15 == 0)
-        {
-            return "FizzBuzz";
+        var result = "";
+
+        var factors = List.of(
+                new Factor(3, "Fizz"),
+                new Factor(5, "Buzz")
+        );
+
+        for (Factor factor : factors) {
+            if (number % factor.factor() == 0) {
+                result += factor.name();
+            }
         }
 
-        if (number % 5 == 0)
-        {
-            return "Buzz";
-        }
-
-        if (number % 3 == 0)
-        {
-            return "Fizz";
-        }
-
-        return "" + number;
+        if ("".equals(result))
+            return "" + number;
+        return result;
     }
 }
