@@ -23,4 +23,17 @@ describe("FizzBuzz", () => {
     expect(fb.convert(15)).toBe("FizzBuzz");
     expect(fb.convert(30)).toBe("FizzBuzz");
   });
+
+  it("should print all the numbers up to 100", () => {
+    let result = "";
+    const log = (message?: any) => {
+      result += message;
+      result += "\n";
+    };
+
+    fb.print(log);
+
+    expect(result).toMatchSnapshot();
+  });
 });
+

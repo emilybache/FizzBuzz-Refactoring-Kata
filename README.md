@@ -3,15 +3,8 @@ FizzBuzz Refactoring Kata
 
 Refactor this code so that adding the new feature is very easy. "Make the change easy, then make the easy change".
 
-New feature
------------
+The existing behaviour and new desired feature are described on [the Samman website](https://sammancoaching.org/kata_descriptions/fizzbuzz.html).
 
-In addition to Multiples of 3 being "Fizz" and multiples of 5 being "Buzz":
-
-* Multiples of 7 are “Whizz”
-* Multiples of 11 are “Bang”
-
-That means for example that multiples of 3 & 7 are “FizzWhizz”, multiples of 5 & 11 are “BuzzBang” etc. 
-
-* The program should continue to print out numbers beyond 100 and instead stop the first time you get “FizzBuzzWhizzBang”.
-
+'demo' branch
+-------------
+The branch 'demo' contains the code you might end up with after doing a preparatory refactoring. There is a recording of this demo in [Java](https://youtu.be/kHwzVlXTOw8)
