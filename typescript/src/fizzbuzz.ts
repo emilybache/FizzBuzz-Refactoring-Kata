@@ -1,3 +1,5 @@
+import * as Console from "console";
+
 export class FizzBuzz {
   convert(num: number): string {
     if (num % 3 === 0 && num % 5 === 0) {
@@ -8,6 +10,12 @@ export class FizzBuzz {
       return "Buzz";
     } else {
       return num.toString();
+    }
+  }
+
+  print() {
+    for (let i = 0; i < 101; i++) {
+      console.log(this.convert(i));
     }
   }
 }
