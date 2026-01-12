@@ -1,34 +1,29 @@
 package codingdojo;
 
-import java.util.List;
+import java.io.PrintStream;
 
 public class FizzBuzz {
-
-    private List<Factor> factors = List.of(
-            new Factor(3, "Fizz"),
-            new Factor(5, "Buzz"),
-            new Factor(7, "Whizz"),
-            new Factor(11, "Bang")
-
-    );
-
-    public void print(int maxiumum) {
-        for (int i = 1; i < maxiumum; i++) {
-            System.out.println(convert(i));
+    public void print(PrintStream out) {
+        for (int i = 1; i < 101; i++) {
+            out.println(convert(i));
         }
     }
     public String convert(int number) {
-        var result = "";
-
-        for (Factor factor : factors) {
-            if (number % factor.factor() == 0)
-            {
-                result += factor.name();
-            }
+        if (number % 15 == 0)
+        {
+            return "FizzBuzz";
         }
 
-        if ("".equals(result))
-            return "" + number;
-        return result;
+        if (number % 5 == 0)
+        {
+            return "Buzz";
+        }
+
+        if (number % 3 == 0)
+        {
+            return "Fizz";
+        }
+
+        return "" + number;
     }
 }
