@@ -1,16 +1,29 @@
-class FizzBuzz:
-    def convert(self, num):
-        if num % 3 == 0 and num % 5 == 0:
-            return "FizzBuzz"
-        elif num % 3 == 0:
-            return "Fizz"
-        elif num % 5 == 0:
-            return "Buzz"
-        else:
-            return str(num)
+import itertools
+from typing import Iterable
 
-    def print(self):
-        return (self.convert(i) for i in range(1, 101))
+_DEFAULT_FACTORS = {
+    3: "Fizz",
+    5: "Buzz",
+}
 
-if __name__ == "__main__":
-    [print(item) for item in FizzBuzz().print()]
+
+def convert(
+    num: int,
+    factor_names: dict[int, str] = _DEFAULT_FACTORS,
+) -> str:
+    factornames = "".join(
+        name for factor, name in factor_names.items() if num % factor == 0
+    )
+    return factornames or str(num)
+
+
+def for_print(
+    start: int = 1,
+    end: str | int = 100,
+    factor_names: dict[int, str] = _DEFAULT_FACTORS,
+) -> Iterable[str]:
+    for i in itertools.count(start):
+        fb = convert(i, factor_names)
+        yield fb
+        if i == end or fb == end:
+            break
